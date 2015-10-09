@@ -1,0 +1,36 @@
+//11
+head(x)
+
+//12
+head(x,2)
+
+//13
+tail(x)
+
+//14
+tail(x,2)
+
+//15
+y<-x[c(47),]
+y
+
+//16
+y<-is.na(x$Ozone)
+z<-factor(y)
+table(z)
+
+//17
+y<-is.na(x$Ozone)
+mean(x$Ozone[!y])
+
+//18
+e<-x[x[,"Ozone"]>31 & x[,"Temp"]>90 & !is.na(x[,"Ozone"]) & !is.na(x[, "Temp"]),]
+mean(e$Solar.R)
+
+//19
+e<-x[x[,"Month"]==6,]
+mean(e$Temp)
+
+//20
+e<-x[x[,"Month"]==5 & !is.na(x$Ozone),]
+max(e$Ozone)
