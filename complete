@@ -1,0 +1,19 @@
+complete <- function(directory, id = 1:332) {
+       files<-list.files(directory,full.names=TRUE)
+	   coln <- c("id","nobs")
+	   dat <- data.frame()
+	   tmp <- TRUE
+	   for(i in id){
+			data <- read.csv(files[i])
+			e <- data[!is.na(data[,"sulfate"]) & !is.na(data[,"nitrate"]),]
+			if(tmp){
+				dat <- data.frame(id=i,nobs=nrow(e))
+				tmp<-FALSE
+			}
+			else{
+				dat1 <- data.frame(id=i,nobs=nrow(e))
+				dat <- rbind(dat,dat1)
+			}
+	   }
+	   dat
+}
