@@ -1,0 +1,17 @@
+corr <- function(directory, threshold = 0) {
+			files<-list.files(directory,full.names=TRUE)
+			n <- length(files)
+			re <- numeric()
+			dat <- data.frame()
+			for(i in 1:n){
+				data <- read.csv(files[i])
+				e <- data[!is.na(data[,"sulfate"]) & !is.na(data[,"nitrate"]),]
+				check <- nrow(e)
+				if(check >= threshold & check >0){
+					cal <- cor(e$sulfate,e$nitrate)
+					re <- c(re,cal)
+				}
+			}
+			return(re)
+
+}
